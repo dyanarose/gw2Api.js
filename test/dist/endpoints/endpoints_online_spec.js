@@ -6,14 +6,14 @@ describe('Endpoints', function() {
     }, 1);
   });
 
-    function act(thisArg, func, args){
-     try{
-       func.apply(thisArg, args);
-     } catch(e)
-     {
+  function act(thisArg, func, args){
+    try{
+      func.apply(thisArg, args);
+    } catch(e)
+    {
       throw e.message;
-     }
     }
+  }
   it('should retrieve data from a non protected resource', function(done){
     var ep = gw2Api.endpoints.quaggans.url,
         params = ep.getParameters();
@@ -35,14 +35,14 @@ describe('Endpoints', function() {
 
   it('should fail if a protected resource is accessed without credentials', function(done){
     var ep = gw2Api.endpoints.account.url,
-        params = ep.getParameters();
+      params = ep.getParameters();
     expect(function(){act(ep, ep.get, [params]);}).toThrow('token must be set on params when calling an authenticated endpoint');
     done();
   });
 
   it('should return the correct X-* headers', function(done){
-    var ep = gw2Api.endpoints.recipes.url;
-    var params = ep.getParameters();
+    var ep = gw2Api.endpoints.recipes.url,
+      params = ep.getParameters();
     params.page = 0;
     ep.get(params).then(function(response){
       expect(response.rawHeaders).not.toBe(null);

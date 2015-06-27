@@ -5,13 +5,13 @@ describe('Ids Parameter', function() {
   });
 
   function act(thisArg, func, args){
-     try{
-       func.apply(thisArg, args);
-     } catch(e)
-     {
+    try{
+      func.apply(thisArg, args);
+    } catch(e)
+    {
       throw e.message;
-     }
     }
+  }
   it('should throw when page and page size set to non numbers', function() {
     expect(function(){act(this, set, ['a']);}).toThrow('value must be a number');
     expect(function(){act(this, setSize, ['a']);}).toThrow('value must be a number');

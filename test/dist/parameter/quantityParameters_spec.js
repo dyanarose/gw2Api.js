@@ -3,14 +3,14 @@ describe('Quantity Parameter', function() {
   beforeEach(function() {
     parameters = new gw2Api.params.QuantityParams();
   });
-function act(thisArg, func, args){
-     try{
-       func.apply(thisArg, args);
-     } catch(e)
-     {
+  function act(thisArg, func, args){
+    try{
+      func.apply(thisArg, args);
+    } catch(e)
+    {
       throw e.message;
-     }
     }
+  }
   it('should throw when page and page size set to non numbers', function() {
     expect(function(){act(this, set, ['a']);}).toThrow('value must be a number');
     expect(function(){act(this, setSize, ['a']);}).toThrow('value must be a number');

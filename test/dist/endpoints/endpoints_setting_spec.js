@@ -1,6 +1,5 @@
 describe('Endpoints', function() {
   it('should set endpoint list', function() {
-
     expect(gw2Api.endpoints).not.toBe(undefined);
     expect(gw2Api.endpoints).not.toBe(null);
   });
@@ -15,5 +14,4 @@ describe('Endpoints', function() {
     expect(ep.urlFormat).toBe('https://api.guildwars2.com/v2/account');
     expect(ep.paramType).toBe('CommonParams');
   });
-
 });

@@ -4,14 +4,14 @@ describe('Common Parameter', function() {
     parameters = new gw2Api.params.CommonParams();
   });
 
-    function act(thisArg, func, args){
-     try{
-       func.apply(thisArg, args);
-     } catch(e)
-     {
+  function act(thisArg, func, args){
+    try{
+      func.apply(thisArg, args);
+    } catch(e)
+    {
       throw e.message;
-     }
     }
+  }
   it('should be able to retrieve common values', function() {
     var page = 1, page_size = 2, lang = 'en'
     parameters.page = page;
@@ -50,7 +50,6 @@ describe('Common Parameter', function() {
     expect(parameters.pageSize).toBe(null);
   });
   it('should throw an error if trying to set page size to a non number', function() {
-
     expect(function(){act(this, set, ['a']);}).toThrow('value must be a number');
 
     function set(value){
@@ -58,7 +57,6 @@ describe('Common Parameter', function() {
     }
   });
   it('should throw an error if trying to set page to a non number', function() {
-
     expect(function(){act(this, set, ['a']);}).toThrow('value must be a number');
 
     function set(value){

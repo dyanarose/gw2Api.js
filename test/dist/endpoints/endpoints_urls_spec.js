@@ -173,8 +173,8 @@ describe('Endpoints', function() {
   });
 
   it('should format the regions url correctly with no query string', function(){
-    var ep = gw2Api.endpoints.regions.url;
-    var params = ep.getParameters();
+    var ep = gw2Api.endpoints.regions.url,
+      params = ep.getParameters();
     params.continent = 1;
     params.floor = -16;
 
@@ -182,8 +182,8 @@ describe('Endpoints', function() {
   });
 
   it('should format the regions url correctly with query string', function(){
-    var ep = gw2Api.endpoints.regions.url;
-    var params = ep.getParameters();
+    var ep = gw2Api.endpoints.regions.url,
+      params = ep.getParameters();
     params.continent = 1;
     params.floor = -16;
     params.ids = [0,1];
@@ -191,8 +191,8 @@ describe('Endpoints', function() {
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/continents/1/floors/-16/regions?page=1&ids=0,1');
   });
   it('should format the maps url correctly with no query string', function(){
-    var ep = gw2Api.endpoints.maps.url;
-    var params = ep.getParameters();
+    var ep = gw2Api.endpoints.maps.url,
+      params = ep.getParameters();
     params.continent = 1;
     params.floor = -16;
     params.region = 5;
@@ -201,8 +201,8 @@ describe('Endpoints', function() {
   });
 
   it('should format the maps url correctly with query string', function(){
-    var ep = gw2Api.endpoints.maps.url;
-    var params = ep.getParameters();
+    var ep = gw2Api.endpoints.maps.url,
+      params = ep.getParameters();
     params.continent = 1;
     params.floor = -16;
     params.region = 5;
@@ -212,8 +212,8 @@ describe('Endpoints', function() {
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/continents/1/floors/-16/regions/5/maps?page=1&ids=0,1');
   });
   it('should format the sectors url correctly with no query string', function(){
-    var ep = gw2Api.endpoints.sectors.url;
-    var params = ep.getParameters();
+    var ep = gw2Api.endpoints.sectors.url,
+      params = ep.getParameters();
     params.continent = 1;
     params.floor = -16;
     params.region = 5;
@@ -223,8 +223,8 @@ describe('Endpoints', function() {
   });
 
   it('should format the sectors url correctly with query string', function(){
-    var ep = gw2Api.endpoints.sectors.url;
-    var params = ep.getParameters();
+    var ep = gw2Api.endpoints.sectors.url,
+      ep.getParameters();
     params.continent = 1;
     params.floor = -16;
     params.region = 5;
@@ -235,8 +235,8 @@ describe('Endpoints', function() {
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/continents/1/floors/-16/regions/5/maps/536/sectors?page=1&ids=0,1');
   });
   it('should format the pois url correctly with no query string', function(){
-    var ep = gw2Api.endpoints.pois.url;
-    var params = ep.getParameters();
+    var ep = gw2Api.endpoints.pois.url,
+      params = ep.getParameters();
     params.continent = 1;
     params.floor = -16;
     params.region = 5;
@@ -246,8 +246,8 @@ describe('Endpoints', function() {
   });
 
   it('should format the pois url correctly with query string', function(){
-    var ep = gw2Api.endpoints.pois.url;
-    var params = ep.getParameters();
+    var ep = gw2Api.endpoints.pois.url,
+      params = ep.getParameters();
     params.continent = 1;
     params.floor = -16;
     params.region = 5;
@@ -258,8 +258,8 @@ describe('Endpoints', function() {
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/continents/1/floors/-16/regions/5/maps/536/pois?page=1&ids=0,1');
   });
   it('should format the tasks url correctly with no query string', function(){
-    var ep = gw2Api.endpoints.tasks.url;
-    var params = ep.getParameters();
+    var ep = gw2Api.endpoints.tasks.url,
+      params = ep.getParameters();
     params.continent = 1;
     params.floor = -16;
     params.region = 5;
@@ -269,8 +269,8 @@ describe('Endpoints', function() {
   });
 
   it('should format the tasks url correctly with query string', function(){
-    var ep = gw2Api.endpoints.tasks.url;
-    var params = ep.getParameters();
+    var ep = gw2Api.endpoints.tasks.url,
+     params = ep.getParameters();
     params.continent = 1;
     params.floor = -16;
     params.region = 5;
