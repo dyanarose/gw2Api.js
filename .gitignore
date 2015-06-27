@@ -4,3 +4,4 @@ dist_temp
 .sass-cache
 bower_components
 todo.txt
+.cache
