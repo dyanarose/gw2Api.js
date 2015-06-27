@@ -1,0 +1,28 @@
+{
+  "name": "dlr.gw2Api",
+  "version": "0.1.0",
+  "description": "",
+  "keywords": [
+    "guild-wars-2-api",
+    "guildwars2-api"
+  ],
+  "main": [
+    "dist/gw2Api.js"
+  ],
+  "authors": [
+    "Dyana Rose <dyanarose@gmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "q": "^1.0.1"
+  },
+  "devDependencies": {
+    "q": "^1.0.1"
+  },
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "moduleName": "gw2Api"
+}
