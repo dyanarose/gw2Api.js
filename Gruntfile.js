@@ -156,13 +156,7 @@ module.exports = function(grunt) {
       'build',
       'exec:git_add',
       f('exec:git_commit:%s', version),
-      f('exec:git_tag:%s', version),
-      //'step:Push changes?',
-      //'exec:git_push',
-      //'step:Publish to npm?',
-      //'exec:npm_publish',
-      //'step:Publish assets?',
-      //'exec:publish_assets'
+      f('exec:git_tag:%s', version)
     ]);
   });
 
