@@ -22,10 +22,10 @@ run all tests, including online tests via:
 `grunt karma`
 
 or just run the offline tests via:
-`grunt karam:offline`
+`grunt karma:offline`
 
 ## Usage
-The [wiki](https://github.com/dyanarose/gw2Api.js/wiki) is growing with documentation. 
+The [wiki](https://github.com/dyanarose/gw2Api.js/wiki) is growing with documentation.
 In the meantime, checkout the [online tests](https://github.com/dyanarose/gw2Api.js/blob/master/test/dist/endpoints/endpoints_online_spec.js) for an example
 
 The below will cause a call to `https://api.guildwars2.com/v2/quaggans?ids=404,attack`
