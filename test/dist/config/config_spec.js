@@ -7,7 +7,7 @@ describe('Config', function() {
     gw2Api.config.defaultLang = null;
   });
 it('should format the url correctly with default lang', function(){
-    var ep = gw2Api.endpoints.floors.get,
+    var ep = gw2Api.endpoints.floors.url,
         params = ep.getParameters();
     params.continent = 1;
     params.ids = [0,1];

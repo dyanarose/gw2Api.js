@@ -31,7 +31,7 @@ In the meantime, checkout the [online tests](https://github.com/dyanarose/gw2Api
 The below will cause a call to `https://api.guildwars2.com/v2/quaggans?ids=404,attack`
 and response.data will then hold the object: `[{"id":"404","url":"https://static.staticwars.com/quaggans/404.jpg"},{"id":"attack","url":"https://static.staticwars.com/quaggans/attack.jpg"}]`
 ```
-var ep = gw2Api.endpoints.quaggans.get,
+var ep = gw2Api.endpoints.quaggans.url,
     params = ep.getParameters();
 params.ids = ['404', 'attack'];
 ep.get(params).then(function(response){
