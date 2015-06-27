@@ -24,5 +24,13 @@
     "globals",
     "node"
   ],
-  "moduleName": "gw2Api"
+  "moduleName": "gw2Api",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "dist_temp",
+    "test",
+    "tests"
+  ]
 }
