@@ -224,7 +224,7 @@ describe('Endpoints', function() {
 
   it('should format the sectors url correctly with query string', function(){
     var ep = gw2Api.endpoints.sectors.url,
-      ep.getParameters();
+      params = ep.getParameters();
     params.continent = 1;
     params.floor = -16;
     params.region = 5;
