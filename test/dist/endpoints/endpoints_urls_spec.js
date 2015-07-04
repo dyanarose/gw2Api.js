@@ -1,5 +1,11 @@
 describe('Endpoints', function() {
 
+  it('should push the endpoint keys into the endpointKeys array', function(){
+    var keys = gw2Api.endpointKeys;
+    expect(keys).not.toBe(null);
+    expect(keys).not.toBe(undefined);
+    expect(keys.length > 0).toBe(true);
+  });
   it('should format the build url correctly with query string', function(){
     var ep = gw2Api.endpoints.build.url,
         params = ep.getParameters();

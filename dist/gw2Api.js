@@ -1,5 +1,5 @@
 /*!
- * gw2Api.js 0.1.1
+ * gw2Api.js 0.2.0
  * https://github.com/dyanarose/gw2Api.js
  * Copyright 2015-2015 Dyana Rose; Licensed MIT
  */
@@ -709,11 +709,13 @@
     }
     (function() {
         "use strict";
-        var eps = {};
+        var eps = {}, keys = [];
         initEndpoints();
         gw2Api.endpoints = eps;
+        gw2Api.endpointKeys = keys;
         function addEndpoint(endpoint) {
             utils.splitIdentifier(endpoint.key, endpoint, eps);
+            keys.push(endpoint.key);
         }
         function initEndpoints() {
             addEndpoint(new Endpoint("account.url", "account", true, "CommonParams"));

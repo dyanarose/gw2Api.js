@@ -1,13 +1,15 @@
 (function (){
   'use strict';
-  var eps = {};
+  var eps = {}, keys = [];
 
   initEndpoints();
 
   gw2Api.endpoints = eps;
+  gw2Api.endpointKeys = keys;
 
   function addEndpoint(endpoint){
     utils.splitIdentifier(endpoint.key, endpoint, eps);
+    keys.push(endpoint.key);
   }
 
   function initEndpoints(){
