@@ -12,6 +12,13 @@ describe('Common Parameter', function() {
       throw e.message;
     }
   }
+  it('should be able to enumerate its parameter properties', function(){
+    var prop;
+    expect(parameters.hasOwnProperty('lang')).toBe(true);
+    expect(parameters.hasOwnProperty('token')).toBe(true);
+    expect(parameters.hasOwnProperty('page')).toBe(true);
+    expect(parameters.hasOwnProperty('pageSize')).toBe(true);
+  });
   it('should be able to retrieve common values', function() {
     var page = 1, page_size = 2, lang = 'en'
     parameters.page = page;

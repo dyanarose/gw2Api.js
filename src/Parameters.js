@@ -21,21 +21,25 @@
      this.type = 'CommonParams';
      Object.defineProperty(this, 'lang', {
        get: function (){return lang;},
-       set: function (value){lang = value;}
+       set: function (value){lang = value;},
+       enumerable: true
      });
 
      Object.defineProperty(this, 'token', {
        get: function (){return token;},
-       set: function (value){token = value;}
+       set: function (value){token = value;},
+       enumerable: true
      });
      Object.defineProperty(this, 'page', {
        get: function () { return pge;},
-       set: function (value) {pge = checkAndConvert(value);}
+       set: function (value) {pge = checkAndConvert(value);},
+       enumerable: true
      });
 
      Object.defineProperty(this, 'pageSize', {
        get: function () { return pgeSize;},
-       set: function (value) {pgeSize = checkAndConvert(value);}
+       set: function (value) {pgeSize = checkAndConvert(value);},
+       enumerable: true
      });
     function checkAndConvert(value){
       if(!utils.checks.notEmpty(value)){
@@ -73,7 +77,8 @@
     this.type = 'IdParams';
     Object.defineProperty(this, 'id', {
       get: function () { return id;},
-      set: function (value) {id = checkAndConvert(value);}
+      set: function (value) {id = checkAndConvert(value);},
+      enumerable: true
     });
 
     function checkAndConvert(value){
@@ -124,7 +129,8 @@
     this.add = add;
     Object.defineProperty(this, 'ids', {
       get: function () { return idset;},
-      set: function (value) {idset = getValueAsArray(value);}
+      set: function (value) {idset = getValueAsArray(value);},
+      enumerable: true
     });
 
     //if array, set, if string split on comma to form array
@@ -174,7 +180,8 @@
     this.type = 'QuantityParams';
     Object.defineProperty(this, 'quantity', {
       get: function () { return iden;},
-      set: function (value) {iden = checkAndConvert(value);}
+      set: function (value) {iden = checkAndConvert(value);},
+      enumerable: true
     });
     //todo what's going on here?
     //if it's not a string it's converting to int? like it's an array or function
@@ -208,7 +215,8 @@
     this.type = 'FloorParams';
     Object.defineProperty(this, 'continent', {
       get: function () { return continent;},
-      set: function (value) {continent = checkAndConvert(value);}
+      set: function (value) {continent = checkAndConvert(value);},
+      enumerable: true
     });
 
     function checkAndConvert(value){
@@ -241,7 +249,8 @@
     this.type = 'RegionParams';
     Object.defineProperty(this, 'floor', {
       get: function () { return floor;},
-      set: function (value) {floor = checkAndConvert(value);}
+      set: function (value) {floor = checkAndConvert(value);},
+      enumerable: true
     });
 
     function checkAndConvert(value){
@@ -267,7 +276,8 @@
     this.type = 'MapParams';
     Object.defineProperty(this, 'region', {
       get: function () { return region;},
-      set: function (value) {region = checkAndConvert(value);}
+      set: function (value) {region = checkAndConvert(value);},
+      enumerable: true
     });
 
     function checkAndConvert(value){
@@ -293,7 +303,8 @@
     this.type = 'SectorParams';
     Object.defineProperty(this, 'map', {
       get: function () { return map;},
-      set: function (value) {map = checkAndConvert(value);}
+      set: function (value) {map = checkAndConvert(value);},
+      enumerable: true
     });
 
     function checkAndConvert(value){
@@ -333,11 +344,13 @@
     //input and output are mutually exclusive
     Object.defineProperty(this, 'output', {
       get: function () { return output;},
-      set: function (value) {output = setOutput(value);}
+      set: function (value) {output = setOutput(value);},
+      enumerable: true
     });
     Object.defineProperty(this, 'input', {
       get: function () { return input;},
-      set: function (value) {input = setInput(value);}
+      set: function (value) {input = setInput(value);},
+      enumerable: true
     });
     function setOutput(value){
       if(value && value !== 0){

@@ -1,5 +1,5 @@
 /*!
- * gw2Api.js 0.2.0
+ * gw2Api.js 0.2.1
  * https://github.com/dyanarose/gw2Api.js
  * Copyright 2015-2015 Dyana Rose; Licensed MIT
  */
@@ -270,7 +270,8 @@
                 },
                 set: function(value) {
                     lang = value;
-                }
+                },
+                enumerable: true
             });
             Object.defineProperty(this, "token", {
                 get: function() {
@@ -278,7 +279,8 @@
                 },
                 set: function(value) {
                     token = value;
-                }
+                },
+                enumerable: true
             });
             Object.defineProperty(this, "page", {
                 get: function() {
@@ -286,7 +288,8 @@
                 },
                 set: function(value) {
                     pge = checkAndConvert(value);
-                }
+                },
+                enumerable: true
             });
             Object.defineProperty(this, "pageSize", {
                 get: function() {
@@ -294,7 +297,8 @@
                 },
                 set: function(value) {
                     pgeSize = checkAndConvert(value);
-                }
+                },
+                enumerable: true
             });
             function checkAndConvert(value) {
                 if (!utils.checks.notEmpty(value)) {
@@ -336,7 +340,8 @@
                 },
                 set: function(value) {
                     id = checkAndConvert(value);
-                }
+                },
+                enumerable: true
             });
             function checkAndConvert(value) {
                 if (!utils.checks.notEmpty(value)) {
@@ -389,7 +394,8 @@
                 },
                 set: function(value) {
                     idset = getValueAsArray(value);
-                }
+                },
+                enumerable: true
             });
             function getValueAsArray(value) {
                 if (!value && value !== 0) {
@@ -439,7 +445,8 @@
                 },
                 set: function(value) {
                     iden = checkAndConvert(value);
-                }
+                },
+                enumerable: true
             });
             function checkAndConvert(value) {
                 if (!utils.checks.notEmpty(value)) {
@@ -472,7 +479,8 @@
                 },
                 set: function(value) {
                     continent = checkAndConvert(value);
-                }
+                },
+                enumerable: true
             });
             function checkAndConvert(value) {
                 if (!utils.checks.notEmpty(value)) {
@@ -507,7 +515,8 @@
                 },
                 set: function(value) {
                     floor = checkAndConvert(value);
-                }
+                },
+                enumerable: true
             });
             function checkAndConvert(value) {
                 if (!utils.checks.notEmpty(value)) {
@@ -535,7 +544,8 @@
                 },
                 set: function(value) {
                     region = checkAndConvert(value);
-                }
+                },
+                enumerable: true
             });
             function checkAndConvert(value) {
                 if (!utils.checks.notEmpty(value)) {
@@ -563,7 +573,8 @@
                 },
                 set: function(value) {
                     map = checkAndConvert(value);
-                }
+                },
+                enumerable: true
             });
             function checkAndConvert(value) {
                 if (!utils.checks.notEmpty(value)) {
@@ -603,7 +614,8 @@
                 },
                 set: function(value) {
                     output = setOutput(value);
-                }
+                },
+                enumerable: true
             });
             Object.defineProperty(this, "input", {
                 get: function() {
@@ -611,7 +623,8 @@
                 },
                 set: function(value) {
                     input = setInput(value);
-                }
+                },
+                enumerable: true
             });
             function setOutput(value) {
                 if (value && value !== 0) {
