@@ -56,7 +56,11 @@ function notEmpty(value){
 function isString(value) {return typeof value === 'string';}
 function isNumber(value) {return typeof value === 'number';}
 function toInt(num){
-  var asInt;
+  var asInt, isInt;
+  isInt = num.toString().match(/^-?\d+$/gm);
+  if(!isInt){
+    throw new Error('value must be a number');
+  }
   asInt = parseInt(num, 10);
   if(isNaN(asInt) || !isNumber(asInt)){
     throw new Error('value must be a number');

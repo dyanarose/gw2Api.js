@@ -1,6 +1,6 @@
 {
   "name": "dlr.gw2Api",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "wrapper for v2 of the Guild Wars 2 API",
   "keywords": [
     "guild-wars-2-api",

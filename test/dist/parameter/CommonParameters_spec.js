@@ -57,14 +57,14 @@ describe('Common Parameter', function() {
     expect(parameters.pageSize).toBe(null);
   });
   it('should throw an error if trying to set page size to a non number', function() {
-    expect(function(){act(this, set, ['a']);}).toThrow('value must be a number');
+    expect(function(){act(this, set, ['1a']);}).toThrow('value must be a number');
 
     function set(value){
       parameters.pageSize = value;
     }
   });
   it('should throw an error if trying to set page to a non number', function() {
-    expect(function(){act(this, set, ['a']);}).toThrow('value must be a number');
+    expect(function(){act(this, set, ['1a']);}).toThrow('value must be a number');
 
     function set(value){
       parameters.page = value;

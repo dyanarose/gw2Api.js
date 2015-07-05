@@ -1,5 +1,5 @@
 /*!
- * gw2Api.js 0.2.1
+ * gw2Api.js 0.2.2
  * https://github.com/dyanarose/gw2Api.js
  * Copyright 2015-2015 Dyana Rose; Licensed MIT
  */
@@ -198,7 +198,11 @@
             return typeof value === "number";
         }
         function toInt(num) {
-            var asInt;
+            var asInt, isInt;
+            isInt = num.toString().match(/^-?\d+$/gm);
+            if (!isInt) {
+                throw new Error("value must be a number");
+            }
             asInt = parseInt(num, 10);
             if (isNaN(asInt) || !isNumber(asInt)) {
                 throw new Error("value must be a number");
