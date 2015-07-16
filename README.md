@@ -25,8 +25,10 @@ or just run the offline tests via:
 `grunt karma:offline`
 
 ## Usage
+
+A playground available at http://dyanarose.github.io/gw2Api.js/. Here you can select endpoints and set parameters to see the end code and use it to call the Guild Wars 2 API.
+
 The [wiki](https://github.com/dyanarose/gw2Api.js/wiki) is growing with documentation.
-In the meantime, checkout the [online tests](https://github.com/dyanarose/gw2Api.js/blob/master/test/dist/endpoints/endpoints_online_spec.js) for an example
 
 The below will cause a call to `https://api.guildwars2.com/v2/quaggans?ids=404,attack`
 and response.data will then hold the object: `[{"id":"404","url":"https://static.staticwars.com/quaggans/404.jpg"},{"id":"attack","url":"https://static.staticwars.com/quaggans/attack.jpg"}]`
