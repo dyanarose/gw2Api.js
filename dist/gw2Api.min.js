@@ -1,5 +1,5 @@
 /*!
- * gw2Api.js 0.2.2
+ * gw2Api.js 0.3.0
  * https://github.com/dyanarose/gw2Api.js
  * Copyright 2015-2015 Dyana Rose; Licensed MIT
  */
