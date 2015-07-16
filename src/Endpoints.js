@@ -47,7 +47,7 @@
     addEndpoint(new Endpoint('recipes.url', 'recipes', false, 'IdsParams'));
     addEndpoint(new Endpoint('recipes.search.url', 'recipes/search', false, 'RecipeSearchParams'));
     addEndpoint(new Endpoint('skins.url', 'skins', false, 'IdsParams'));
-    addEndpoint(new Endpoint('tokenInfo.url', 'tokeninfo', true, 'CommonParams'));
+    addEndpoint(new Endpoint('tokenInfo.url', 'tokeninfo', true, 'AuthParams'));
     addEndpoint(new Endpoint('worlds.url', 'worlds', false, 'IdsParams'));
   }
 }());

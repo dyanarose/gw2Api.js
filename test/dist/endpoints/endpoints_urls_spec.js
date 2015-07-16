@@ -16,18 +16,21 @@ describe('Endpoints', function() {
     var ep = gw2Api.endpoints.account.url,
         params = ep.getParameters();
     params.token = 'imatoken';
+    expect(ep.paramType).toBe('AuthParams');
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/account?access_token=imatoken');
   });
   it('should format the account bank url correctly', function(){
     var ep = gw2Api.endpoints.account.bank.url,
         params = ep.getParameters();
     params.token = 'imatoken';
+    expect(ep.paramType).toBe('AuthParams');
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/account/bank?access_token=imatoken');
   });
   it('should format the account materials url correctly', function(){
     var ep = gw2Api.endpoints.account.materials.url,
         params = ep.getParameters();
     params.token = 'imatoken';
+    expect(ep.paramType).toBe('AuthParams');
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/account/materials?access_token=imatoken');
   });
   it('should format the characters url correctly', function(){
@@ -62,6 +65,7 @@ describe('Endpoints', function() {
     var ep = gw2Api.endpoints.tokenInfo.url,
         params = ep.getParameters();
     params.token = 'imatoken';
+    expect(ep.paramType).toBe('AuthParams');
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/tokeninfo?access_token=imatoken');
   });
 
