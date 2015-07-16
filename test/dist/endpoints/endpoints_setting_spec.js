@@ -12,6 +12,6 @@ describe('Endpoints', function() {
     expect(ep.key).toBe('account.url');
     expect(ep.isAuthenticated).toBe(true);
     expect(ep.urlFormat).toBe('https://api.guildwars2.com/v2/account');
-    expect(ep.paramType).toBe('CommonParams');
+    expect(ep.paramType).toBe('AuthParams');
   });
 });

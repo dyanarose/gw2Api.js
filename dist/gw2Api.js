@@ -252,8 +252,11 @@
         "use strict";
         gw2Api.params = {
             CommonParams: CommonParams,
+            AuthParams: AuthParams,
+            IdAuthParams: IdAuthParams,
             IdParams: IdParams,
             CharacterParams: CharacterParams,
+            IdsAuthParams: IdsAuthParams,
             IdsParams: IdsParams,
             QuantityParams: QuantityParams,
             FloorParams: FloorParams,
@@ -274,15 +277,6 @@
                 },
                 set: function(value) {
                     lang = value;
-                },
-                enumerable: true
-            });
-            Object.defineProperty(this, "token", {
-                get: function() {
-                    return token;
-                },
-                set: function(value) {
-                    token = value;
                 },
                 enumerable: true
             });
@@ -334,6 +328,59 @@
             }
             return params.join("&");
         };
+        function AuthParams() {
+            var token;
+            CommonParams.apply(this, arguments);
+            this.type = "AuthParams";
+            Object.defineProperty(this, "token", {
+                get: function() {
+                    return token;
+                },
+                set: function(value) {
+                    token = value;
+                },
+                enumerable: true
+            });
+        }
+        AuthParams.prototype.url = CommonParams.prototype.url;
+        AuthParams.prototype.getQueryString = function getQueryStringId() {
+            return CommonParams.prototype.getQueryString.call(this);
+        };
+        function IdAuthParams() {
+            var id;
+            AuthParams.apply(this, arguments);
+            this.type = "IdAuthParams";
+            Object.defineProperty(this, "id", {
+                get: function() {
+                    return id;
+                },
+                set: function(value) {
+                    id = checkAndConvert(value);
+                },
+                enumerable: true
+            });
+            function checkAndConvert(value) {
+                if (!utils.checks.notEmpty(value)) {
+                    return null;
+                }
+                if (utils.checks.isString(value) || utils.checks.isNumber(value)) {
+                    return value;
+                }
+                throw new Error("value must be a number or string");
+            }
+        }
+        IdAuthParams.prototype.url = AuthParams.prototype.url;
+        IdAuthParams.prototype.getQueryString = function getQueryStringId() {
+            var params = [];
+            var pQueryString = AuthParams.prototype.getQueryString.call(this);
+            if (pQueryString) {
+                params.push(pQueryString);
+            }
+            if (this.id || this.id === 0) {
+                params.push("id=" + this.id);
+            }
+            return params.join("&");
+        };
         function IdParams() {
             var id;
             CommonParams.apply(this, arguments);
@@ -371,20 +418,72 @@
         };
         function CharacterParams() {
             var idset;
-            IdParams.apply(this, arguments);
+            IdAuthParams.apply(this, arguments);
             this.type = "CharacterParams";
         }
         CharacterParams.prototype.url = function characterParamsUrl(urlFormat, paramType) {
-            var url = CommonParams.prototype.url.call(this, urlFormat, paramType);
+            var url = AuthParams.prototype.url.call(this, urlFormat, paramType);
             url = utils.format(url, this.id);
             return url;
         };
         CharacterParams.prototype.getQueryString = function getQueryStringIds() {
             var params = [];
-            var pQueryString = CommonParams.prototype.getQueryString.call(this);
+            var pQueryString = AuthParams.prototype.getQueryString.call(this);
             if (pQueryString) {
                 params.push(pQueryString);
             }
+            return params.join("&");
+        };
+        function IdsAuthParams() {
+            var idset;
+            IdAuthParams.apply(this, arguments);
+            this.type = "IdsAuthParams";
+            this.add = add;
+            Object.defineProperty(this, "ids", {
+                get: function() {
+                    return idset;
+                },
+                set: function(value) {
+                    idset = getValueAsArray(value);
+                },
+                enumerable: true
+            });
+            function getValueAsArray(value) {
+                if (!value && value !== 0) {
+                    return null;
+                }
+                if (utils.checks.isArray(value)) {
+                    return value;
+                } else if (utils.checks.isString(value)) {
+                    return value.split(",");
+                } else if (utils.checks.isNumber(value)) {
+                    return [ value ];
+                }
+                throw new Error('value must be an array, number, string or "all"');
+            }
+            function add(value) {
+                var valSet = getValueAsArray(value);
+                if (!valSet) {
+                    return;
+                }
+                if (idset) {
+                    idset.concat(valSet);
+                } else {
+                    idset = valSet;
+                }
+            }
+        }
+        IdsAuthParams.prototype.url = IdAuthParams.prototype.url;
+        IdsAuthParams.prototype.getQueryString = function getQueryStringIds() {
+            var params = [];
+            var pQueryString = IdAuthParams.prototype.getQueryString.call(this);
+            if (pQueryString) {
+                params.push(pQueryString);
+            }
+            if (!this.ids || !this.ids.length) {
+                return params.join("&");
+            }
+            params.push("ids=" + this.ids.join(","));
             return params.join("&");
         };
         function IdsParams() {
@@ -735,11 +834,11 @@
             keys.push(endpoint.key);
         }
         function initEndpoints() {
-            addEndpoint(new Endpoint("account.url", "account", true, "CommonParams"));
-            addEndpoint(new Endpoint("account.bank.url", "account/bank", true, "CommonParams"));
-            addEndpoint(new Endpoint("account.materials.url", "account/materials", true, "CommonParams"));
+            addEndpoint(new Endpoint("account.url", "account", true, "AuthParams"));
+            addEndpoint(new Endpoint("account.bank.url", "account/bank", true, "AuthParams"));
+            addEndpoint(new Endpoint("account.materials.url", "account/materials", true, "AuthParams"));
             addEndpoint(new Endpoint("build.url", "build", false, "CommonParams"));
-            addEndpoint(new Endpoint("characters.url", "characters", true, "IdsParams"));
+            addEndpoint(new Endpoint("characters.url", "characters", true, "IdsAuthParams"));
             addEndpoint(new Endpoint("characters.inventory.url", "characters/{0}/inventory", true, "CharacterParams"));
             addEndpoint(new Endpoint("characters.equipment.url", "characters/{0}/equipment", true, "CharacterParams"));
             addEndpoint(new Endpoint("colors.url", "colors", false, "IdsParams"));
@@ -748,13 +847,13 @@
             addEndpoint(new Endpoint("commerce.exchange.gems.url", "commerce/exchange/gems", false, "QuantityParams"));
             addEndpoint(new Endpoint("commerce.listings.url", "commerce/listings", false, "IdsParams"));
             addEndpoint(new Endpoint("commerce.prices.url", "commerce/prices", false, "IdsParams"));
-            addEndpoint(new Endpoint("commerce.transactions.url", "commerce/transactions", true, "CommonParams"));
-            addEndpoint(new Endpoint("commerce.transactions.current.url", "commerce/transactions/current", true, "CommonParams"));
-            addEndpoint(new Endpoint("commerce.transactions.current.buy.url", "commerce/transactions/current/buy", true, "CommonParams"));
-            addEndpoint(new Endpoint("commerce.transactions.current.sell.url", "commerce/transactions/current/sell", true, "CommonParams"));
-            addEndpoint(new Endpoint("commerce.transactions.history.url", "commerce/transactions/history", true, "CommonParams"));
-            addEndpoint(new Endpoint("commerce.transactions.history.buy.url", "commerce/transactions/history/buy", true, "CommonParams"));
-            addEndpoint(new Endpoint("commerce.transactions.history.sell.url", "commerce/transactions/history/sell", true, "CommonParams"));
+            addEndpoint(new Endpoint("commerce.transactions.url", "commerce/transactions", true, "AuthParams"));
+            addEndpoint(new Endpoint("commerce.transactions.current.url", "commerce/transactions/current", true, "AuthParams"));
+            addEndpoint(new Endpoint("commerce.transactions.current.buy.url", "commerce/transactions/current/buy", true, "AuthParams"));
+            addEndpoint(new Endpoint("commerce.transactions.current.sell.url", "commerce/transactions/current/sell", true, "AuthParams"));
+            addEndpoint(new Endpoint("commerce.transactions.history.url", "commerce/transactions/history", true, "AuthParams"));
+            addEndpoint(new Endpoint("commerce.transactions.history.buy.url", "commerce/transactions/history/buy", true, "AuthParams"));
+            addEndpoint(new Endpoint("commerce.transactions.history.sell.url", "commerce/transactions/history/sell", true, "AuthParams"));
             addEndpoint(new Endpoint("continents.url", "continents", false, "IdsParams"));
             addEndpoint(new Endpoint("floors.url", "continents/{0}/floors", false, "FloorParams"));
             addEndpoint(new Endpoint("regions.url", "continents/{0}/floors/{1}/regions", false, "RegionParams"));

@@ -13,11 +13,11 @@
   }
 
   function initEndpoints(){
-    addEndpoint(new Endpoint('account.url', 'account', true, 'CommonParams'));
-    addEndpoint(new Endpoint('account.bank.url', 'account/bank', true, 'CommonParams'));
-    addEndpoint(new Endpoint('account.materials.url', 'account/materials', true, 'CommonParams'));
+    addEndpoint(new Endpoint('account.url', 'account', true, 'AuthParams'));
+    addEndpoint(new Endpoint('account.bank.url', 'account/bank', true, 'AuthParams'));
+    addEndpoint(new Endpoint('account.materials.url', 'account/materials', true, 'AuthParams'));
     addEndpoint(new Endpoint('build.url', 'build', false, 'CommonParams'));
-    addEndpoint(new Endpoint('characters.url', 'characters', true, 'IdsParams'));
+    addEndpoint(new Endpoint('characters.url', 'characters', true, 'IdsAuthParams'));
     addEndpoint(new Endpoint('characters.inventory.url', 'characters/{0}/inventory', true, 'CharacterParams'));
     addEndpoint(new Endpoint('characters.equipment.url', 'characters/{0}/equipment', true, 'CharacterParams'));
     addEndpoint(new Endpoint('colors.url', 'colors', false, 'IdsParams'));
@@ -26,13 +26,13 @@
     addEndpoint(new Endpoint('commerce.exchange.gems.url', 'commerce/exchange/gems', false, 'QuantityParams'));
     addEndpoint(new Endpoint('commerce.listings.url', 'commerce/listings', false, 'IdsParams'));
     addEndpoint(new Endpoint('commerce.prices.url', 'commerce/prices', false, 'IdsParams'));
-    addEndpoint(new Endpoint('commerce.transactions.url', 'commerce/transactions', true, 'CommonParams'));
-    addEndpoint(new Endpoint('commerce.transactions.current.url', 'commerce/transactions/current', true, 'CommonParams'));
-    addEndpoint(new Endpoint('commerce.transactions.current.buy.url', 'commerce/transactions/current/buy', true, 'CommonParams'));
-    addEndpoint(new Endpoint('commerce.transactions.current.sell.url', 'commerce/transactions/current/sell', true, 'CommonParams'));
-    addEndpoint(new Endpoint('commerce.transactions.history.url', 'commerce/transactions/history', true, 'CommonParams'));
-    addEndpoint(new Endpoint('commerce.transactions.history.buy.url', 'commerce/transactions/history/buy', true, 'CommonParams'));
-    addEndpoint(new Endpoint('commerce.transactions.history.sell.url', 'commerce/transactions/history/sell', true, 'CommonParams'));
+    addEndpoint(new Endpoint('commerce.transactions.url', 'commerce/transactions', true, 'AuthParams'));
+    addEndpoint(new Endpoint('commerce.transactions.current.url', 'commerce/transactions/current', true, 'AuthParams'));
+    addEndpoint(new Endpoint('commerce.transactions.current.buy.url', 'commerce/transactions/current/buy', true, 'AuthParams'));
+    addEndpoint(new Endpoint('commerce.transactions.current.sell.url', 'commerce/transactions/current/sell', true, 'AuthParams'));
+    addEndpoint(new Endpoint('commerce.transactions.history.url', 'commerce/transactions/history', true, 'AuthParams'));
+    addEndpoint(new Endpoint('commerce.transactions.history.buy.url', 'commerce/transactions/history/buy', true, 'AuthParams'));
+    addEndpoint(new Endpoint('commerce.transactions.history.sell.url', 'commerce/transactions/history/sell', true, 'AuthParams'));
     addEndpoint(new Endpoint('continents.url', 'continents', false, 'IdsParams'));
     addEndpoint(new Endpoint('floors.url', 'continents/{0}/floors', false, 'FloorParams'));
     addEndpoint(new Endpoint('regions.url', 'continents/{0}/floors/{1}/regions', false, 'RegionParams'));

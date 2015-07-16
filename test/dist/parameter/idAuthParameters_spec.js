@@ -1,7 +1,7 @@
-describe('Id Parameter', function() {
+describe('Id Auth Parameter', function() {
   var parameters;
   beforeEach(function() {
-    parameters = new gw2Api.params.IdParams();
+    parameters = new gw2Api.params.IdAuthParams();
   });
   function act(thisArg, func, args){
     try{
@@ -16,6 +16,7 @@ describe('Id Parameter', function() {
     expect(parameters.hasOwnProperty('lang')).toBe(true);
     expect(parameters.hasOwnProperty('page')).toBe(true);
     expect(parameters.hasOwnProperty('pageSize')).toBe(true);
+    expect(parameters.hasOwnProperty('token')).toBe(true);
     expect(parameters.hasOwnProperty('id')).toBe(true);
   });
   it('should throw when page and page size set to non numbers', function() {
