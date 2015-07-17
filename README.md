@@ -7,12 +7,12 @@ Uses [Q.js](http://documentup.com/kriskowal/q/) to return promises from the API 
 ## Bower Installation
 `bower install dlr.gw2Api`
 
-or grab the files from the dist folder:
+## Or grab the dist folder
 ```
 dist/gw2Api.js
 dist/gw2Api.min.js
 ```
-or clone the repo locally and build it yourself:
+## Or clone the repo locally and build it yourself
 ```
 npm install
 bower install
@@ -26,12 +26,16 @@ or just run the offline tests via:
 
 ## Usage
 
-A playground available at http://dyanarose.github.io/gw2Api.js/. Here you can select endpoints and set parameters to see the end code and use it to call the Guild Wars 2 API.
+Ensure you reference both Q.js and gw2Api.js
+```
+<script src="path/to/q.js"></script>
+<script src="path/to/gw2Api.js"</script>
+```
+A playground available at http://dyanarose.github.io/gw2Api.js. Here you can select endpoints and set parameters to see the end code and use it to call the Guild Wars 2 API.
 
 The [wiki](https://github.com/dyanarose/gw2Api.js/wiki) is growing with documentation.
 
-The below will cause a call to `https://api.guildwars2.com/v2/quaggans?ids=404,attack`
-and response.data will then hold the object: `[{"id":"404","url":"https://static.staticwars.com/quaggans/404.jpg"},{"id":"attack","url":"https://static.staticwars.com/quaggans/attack.jpg"}]`
+## Example
 ```
 var ep = gw2Api.endpoints.quaggans.url,
     params = ep.getParameters();
@@ -42,3 +46,8 @@ ep.get(params).then(function(response){
   headers = response.headers;
 };
 ```
+
+The above will cause a call to;
+`https://api.guildwars2.com/v2/quaggans?ids=404,attack`
+
+response.data will then hold the object: `[{"id":"404","url":"https://static.staticwars.com/quaggans/404.jpg"},{"id":"attack","url":"https://static.staticwars.com/quaggans/attack.jpg"}]`
