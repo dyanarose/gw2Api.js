@@ -382,12 +382,12 @@ describe('Endpoints', function() {
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/quaggans?id=404');
   });
   it('should format the recipes url correctly with no query string', function(){
-    var ep = gw2Api.endpoints.recipes.url,
-        params = ep.getParameters();
+      var ep = gw2Api.endpoints.recipes.url,
+          params = ep.getParameters();
 
-    expect(ep.paramType).toBe('IdsParams');
-    expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/recipes');
-  });
+      expect(ep.paramType).toBe('IdsParams');
+      expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/recipes');
+    });
   it('should format the recipes url correctly with "all" query string', function(){
     var ep = gw2Api.endpoints.recipes.url,
         params = ep.getParameters();
@@ -419,6 +419,49 @@ describe('Endpoints', function() {
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/recipes/search?input=7319');
   });
 
+  it('should format the specializations url correctly with no query string', function(){
+    var ep = gw2Api.endpoints.specializations.url,
+        params = ep.getParameters();
+
+    expect(ep.paramType).toBe('IdsParams');
+    expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/specializations');
+  });
+  it('should format the specializations url correctly with "all" query string', function(){
+      var ep = gw2Api.endpoints.specializations.url,
+          params = ep.getParameters();
+      params.ids = 'all';
+      expect(ep.paramType).toBe('IdsParams');
+      expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/specializations?ids=all');
+  });
+  it('should format the specializations url correctly with an id', function(){
+      var ep = gw2Api.endpoints.specializations.url,
+          params = ep.getParameters();
+      params.id = 7319;
+      expect(ep.paramType).toBe('IdsParams');
+      expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/specializations?id=7319');
+  });
+
+  it('should format the traits url correctly with no query string', function(){
+    var ep = gw2Api.endpoints.traits.url,
+        params = ep.getParameters();
+
+    expect(ep.paramType).toBe('IdsParams');
+    expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/traits');
+  });
+  it('should format the traits url correctly with "all" query string', function(){
+      var ep = gw2Api.endpoints.traits.url,
+          params = ep.getParameters();
+      params.ids = 'all';
+      expect(ep.paramType).toBe('IdsParams');
+      expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/traits?ids=all');
+  });
+  it('should format the traits url correctly with an id', function(){
+      var ep = gw2Api.endpoints.traits.url,
+          params = ep.getParameters();
+      params.id = 7319;
+      expect(ep.paramType).toBe('IdsParams');
+      expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/traits?id=7319');
+  });
   it('should default to last set value wins when both input and output are set', function(){
     var ep = gw2Api.endpoints.recipes.search.url,
         params = ep.getParameters();
