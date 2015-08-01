@@ -1,5 +1,5 @@
 /*!
- * gw2Api.js 0.3.0
+ * gw2Api.js 0.4.0
  * https://github.com/dyanarose/gw2Api.js
  * Copyright 2015-2015 Dyana Rose; Licensed MIT
  */
@@ -867,6 +867,8 @@
             addEndpoint(new Endpoint("quaggans.url", "quaggans", false, "IdsParams"));
             addEndpoint(new Endpoint("recipes.url", "recipes", false, "IdsParams"));
             addEndpoint(new Endpoint("recipes.search.url", "recipes/search", false, "RecipeSearchParams"));
+            addEndpoint(new Endpoint("specializations.url", "specializations", false, "IdsParams"));
+            addEndpoint(new Endpoint("traits.url", "traits", false, "IdsParams"));
             addEndpoint(new Endpoint("skins.url", "skins", false, "IdsParams"));
             addEndpoint(new Endpoint("tokenInfo.url", "tokeninfo", true, "AuthParams"));
             addEndpoint(new Endpoint("worlds.url", "worlds", false, "IdsParams"));
