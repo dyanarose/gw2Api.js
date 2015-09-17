@@ -27,12 +27,33 @@ describe('Endpoints', function() {
     expect(ep.paramType).toBe('AuthParams');
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/account/bank?access_token=imatoken');
   });
+  it('should format the account dyes url correctly', function(){
+    var ep = gw2Api.endpoints.account.dyes.url,
+        params = ep.getParameters();
+    params.token = 'imatoken';
+    expect(ep.paramType).toBe('AuthParams');
+    expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/account/dyes?access_token=imatoken');
+  });
   it('should format the account materials url correctly', function(){
     var ep = gw2Api.endpoints.account.materials.url,
         params = ep.getParameters();
     params.token = 'imatoken';
     expect(ep.paramType).toBe('AuthParams');
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/account/materials?access_token=imatoken');
+  });
+  it('should format the account skins url correctly', function(){
+    var ep = gw2Api.endpoints.account.skins.url,
+        params = ep.getParameters();
+    params.token = 'imatoken';
+    expect(ep.paramType).toBe('AuthParams');
+    expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/account/skins?access_token=imatoken');
+  });
+  it('should format the account wallet url correctly', function(){
+    var ep = gw2Api.endpoints.account.wallet.url,
+        params = ep.getParameters();
+    params.token = 'imatoken';
+    expect(ep.paramType).toBe('AuthParams');
+    expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/account/wallet?access_token=imatoken');
   });
   it('should format the characters url correctly', function(){
     var ep = gw2Api.endpoints.characters.url,
@@ -66,20 +87,28 @@ describe('Endpoints', function() {
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/colors?id=1');
   });
 
-  it('should format the token info url correctly', function(){
-    var ep = gw2Api.endpoints.tokenInfo.url,
-        params = ep.getParameters();
-    params.token = 'imatoken';
-    expect(ep.paramType).toBe('AuthParams');
-    expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/tokeninfo?access_token=imatoken');
-  });
-
   it('should format the commerce exchange url correctly with query string', function(){
     var ep = gw2Api.endpoints.commerce.exchange.url,
         params = ep.getParameters();
     params.page = 0;
     expect(ep.paramType).toBe('CommonParams');
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/commerce/exchange?page=0');
+  });
+  it('should format the commerce exchange coins url correctly with query string', function(){
+    var epCoins = gw2Api.endpoints.commerce.exchange.coins.url,
+        paramsCoins = epCoins.getParameters();
+    paramsCoins.quantity = 45;
+    paramsCoins.page = 0;
+    expect(epCoins.paramType).toBe('QuantityParams');
+    expect(epCoins.url(paramsCoins)).toBe('https://api.guildwars2.com/v2/commerce/exchange/coins?page=0&quantity=45');
+  });
+  it('should format the commerce exchange gems url correctly with query string', function(){
+    var epGems = gw2Api.endpoints.commerce.exchange.gems.url,
+        paramsGems = epGems.getParameters();
+    paramsGems.quantity = 50;
+    paramsGems.page = 0;
+    expect(epGems.paramType).toBe('QuantityParams');
+    expect(epGems.url(paramsGems)).toBe('https://api.guildwars2.com/v2/commerce/exchange/gems?page=0&quantity=50');
   });
   it('should format the commerce listings url correctly with query string', function(){
     var epListings = gw2Api.endpoints.commerce.listings.url,
@@ -96,22 +125,6 @@ describe('Endpoints', function() {
     paramsPrices.ids = [1,2];
     expect(epPrices.paramType).toBe('IdsParams');
     expect(epPrices.url(paramsPrices)).toBe('https://api.guildwars2.com/v2/commerce/prices?page=0&ids=1,2');
-  });
-  it('should format the commerce exchange gems url correctly with query string', function(){
-    var epGems = gw2Api.endpoints.commerce.exchange.gems.url,
-        paramsGems = epGems.getParameters();
-    paramsGems.quantity = 50;
-    paramsGems.page = 0;
-    expect(epGems.paramType).toBe('QuantityParams');
-    expect(epGems.url(paramsGems)).toBe('https://api.guildwars2.com/v2/commerce/exchange/gems?page=0&quantity=50');
-  });
-  it('should format the commerce exchange coins url correctly with query string', function(){
-    var epCoins = gw2Api.endpoints.commerce.exchange.coins.url,
-        paramsCoins = epCoins.getParameters();
-    paramsCoins.quantity = 45;
-    paramsCoins.page = 0;
-    expect(epCoins.paramType).toBe('QuantityParams');
-    expect(epCoins.url(paramsCoins)).toBe('https://api.guildwars2.com/v2/commerce/exchange/coins?page=0&quantity=45');
   });
   it('should format the commerce transactions url correctly with query string', function(){
     var ep = gw2Api.endpoints.commerce.transactions.url,
@@ -170,6 +183,14 @@ describe('Endpoints', function() {
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/commerce/transactions/history/sell?page=0&access_token=imatoken');
   });
 
+  it('should format the currencies url correctly with query string', function(){
+    var ep = gw2Api.endpoints.currencies.url,
+        params = ep.getParameters();
+    params.ids = [0,1];
+    params.page = 1;
+    expect(ep.paramType).toBe('IdsParams');
+    expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/currencies?page=1&ids=0,1');
+  });
   it('should format the continents url correctly with no query string', function(){
     var ep = gw2Api.endpoints.continents.url,
         params = ep.getParameters();
@@ -242,6 +263,22 @@ describe('Endpoints', function() {
     params.page = 1;
     expect(ep.paramType).toBe('MapParams');
     expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/continents/1/floors/-16/regions/5/maps?page=1&ids=0,1');
+  });
+  it('should format the pvp games url correctly with query string', function(){
+    var ep = gw2Api.endpoints.pvp.games.url,
+        params = ep.getParameters();
+    params.page = 0;
+    params.token = 'imatoken';
+    expect(ep.paramType).toBe('AuthParams');
+    expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/pvp/games?page=0&access_token=imatoken');
+  });
+  it('should format the pvp stats url correctly with query string', function(){
+    var ep = gw2Api.endpoints.pvp.stats.url,
+        params = ep.getParameters();
+    params.page = 0;
+    params.token = 'imatoken';
+    expect(ep.paramType).toBe('AuthParams');
+    expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/pvp/stats?page=0&access_token=imatoken');
   });
   it('should format the sectors url correctly with no query string', function(){
     var ep = gw2Api.endpoints.sectors.url,
@@ -439,6 +476,14 @@ describe('Endpoints', function() {
       params.id = 7319;
       expect(ep.paramType).toBe('IdsParams');
       expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/specializations?id=7319');
+  });
+
+  it('should format the token info url correctly', function(){
+    var ep = gw2Api.endpoints.tokenInfo.url,
+        params = ep.getParameters();
+    params.token = 'imatoken';
+    expect(ep.paramType).toBe('AuthParams');
+    expect(ep.url(params)).toBe('https://api.guildwars2.com/v2/tokeninfo?access_token=imatoken');
   });
 
   it('should format the traits url correctly with no query string', function(){
