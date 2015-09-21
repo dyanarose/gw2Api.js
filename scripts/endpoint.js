@@ -52,7 +52,7 @@
               '  var data, headers;\n'+
               '  data = response.data;\n'+
               '  headers = response.headers;\n'+
-              '\};'
+              '\});'
             )
           ));
       }
