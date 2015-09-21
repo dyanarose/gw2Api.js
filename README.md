@@ -31,7 +31,7 @@ Ensure you reference both Q.js and gw2Api.js
 <script src="path/to/q.js"></script>
 <script src="path/to/gw2Api.js"</script>
 ```
-A playground available at http://dyanarose.github.io/gw2Api.js. Here you can select endpoints and set parameters to see the end code and use it to call the Guild Wars 2 API.
+A playground is available at http://dyanarose.github.io/gw2Api.js. Here you can select endpoints and set parameters to see the end code and use it to call the Guild Wars 2 API.
 
 The [wiki](https://github.com/dyanarose/gw2Api.js/wiki) is growing with documentation.
 
@@ -44,7 +44,7 @@ ep.get(params).then(function(response){
   var data, headers;
   data = response.data;
   headers = response.headers;
-};
+});
 ```
 
 The above will cause a call to;
